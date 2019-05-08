@@ -3,12 +3,18 @@
 namespace application\controllers;
 
 use application\core\Controller;
+use application\lib\Pagination;
 
 class MainController extends Controller
 {
     public function indexAction()
     {
-        $this->view->render('Main page');
+        $pagination = new Pagination($this->route, $this->model->postCount(), 5);
+        $vars = [
+            'pagination' => $pagination->get(),
+            'list' => $this->model->postsList($this->route),
+        ];
+        $this->view->render('Main page', $vars);
 
     }
 
@@ -33,7 +39,13 @@ class MainController extends Controller
 
     public function postAction()
     {
-        $this->view->render('Contacts page');
+        if (!$this->model->isPostExist($this->route['id'])) {
+            $this->view->errorCode(404);
+        }
+        $vars = [
+            'data' => $this->model->postData($this->route['id'])[0],
+        ];
+        $this->view->render($vars['data']['name'], $vars);
     }
 
 }

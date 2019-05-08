@@ -7,6 +7,12 @@ return [
         'action' => 'index',
     ],
 
+    'main/index/{page:\d+}' => [
+        'controller' => 'main',
+        'action' => 'index',
+    ],
+
+
     'about' => [
         'controller' => 'main',
         'action' => 'about',
@@ -17,7 +23,7 @@ return [
         'action' => 'contact',
     ],
 
-    'post' => [
+    'post/{id:\d+}' => [
         'controller' => 'main',
         'action' => 'post',
     ],
@@ -37,14 +43,24 @@ return [
         'action' => 'add',
     ],
 
-    'admin/edit' => [
+    'admin/edit/{id:\d+}' => [
         'controller' => 'admin',
         'action' => 'edit',
     ],
 
-    'admin/delete' => [
+    'admin/delete/{id:\d+}' => [
         'controller' => 'admin',
         'action' => 'delete',
+    ],
+
+    'admin/posts' => [
+        'controller' => 'admin',
+        'action' => 'posts',
+    ],
+
+    'admin/posts/{page:\d+}' => [
+        'controller' => 'admin',
+        'action' => 'posts',
     ],
 
 ];

@@ -14,5 +14,6 @@ return [
         'edit',
         'delete',
         'logout',
+        'posts',
     ]
 ];

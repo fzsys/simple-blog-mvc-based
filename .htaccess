@@ -8,5 +8,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 # redirect all to index.php (one entry point)
 RewriteRule ^(.*)$ index.php
 
+
+
 #RewriteCond %{REQUEST_FILENAME} !-l
 #RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
