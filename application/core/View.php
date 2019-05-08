@@ -17,7 +17,7 @@ class View
         $this->path = $this->route['controller'] . '/' . $this->route['action'];
     }
 
-    //статический метод для загрузки страниц ошибок
+
     public static function errorCode($code)
     {
         $path = 'application/views/errors/' . $code . '.php';
@@ -28,7 +28,7 @@ class View
         }
     }
 
-    //метод рендера контента странички
+
     public function render($title, $vars = [])
     {
         extract($vars);

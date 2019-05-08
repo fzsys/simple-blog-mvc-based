@@ -14,7 +14,7 @@ abstract class Controller
     {
 
         $this->route = $route;
-        //проверяем доступность старнички для пользователя. Если она доступна - создаем обьекты Модели и Вида для данного контроллера, если нет - выбрасываем ошибку
+
         if (!$this->checkAccess()) {
             View::errorCode(403);
         };
@@ -30,18 +30,24 @@ abstract class Controller
         }
     }
 
-    //классы для проверки доступа пользоватетелей (используя данные из сессии) к страничкам сайта
+
     public function checkAccess()
     {
         $this->access = require 'application/access/' . $this->route['controller'] . '.php';
         if ($this->isAccess(('all'))) {
             return true;
-        } else if (isset($_SESSION['authorized']['id']) and $this->isAccess('authorized')) {
-            return true;
-        } else if (!isset($_SESSION['authorized']['id']) and $this->isAccess(('guest'))) {
-            return true;
-        } else if (isset($_SESSION['admin']) and $this->isAccess(('admin'))) {
-            return true;
+        } else {
+            if (isset($_SESSION['authorized']['id']) and $this->isAccess('authorized')) {
+                return true;
+            } else {
+                if (!isset($_SESSION['authorized']['id']) and $this->isAccess(('guest'))) {
+                    return true;
+                } else {
+                    if (isset($_SESSION['admin']) and $this->isAccess(('admin'))) {
+                        return true;
+                    }
+                }
+            }
         }
         return false;
     }

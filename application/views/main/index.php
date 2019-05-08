@@ -20,7 +20,8 @@
                     <div class="post-preview">
                         <a href="/post/<?php echo $val['id']; ?>">
                             <h2 class="post-title"><?php echo htmlspecialchars($val['name'], ENT_QUOTES); ?></h2>
-                            <h5 class="post-subtitle"><?php echo htmlspecialchars($val['description'], ENT_QUOTES); ?></h5>
+                            <h5 class="post-subtitle"><?php echo htmlspecialchars($val['description'],
+                                    ENT_QUOTES); ?></h5>
                         </a>
                         <p class="post-meta">ID of this post <?php echo $val['id']; ?></p>
                     </div>

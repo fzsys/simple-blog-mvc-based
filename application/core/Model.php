@@ -25,7 +25,7 @@ abstract class Model
 
     public function postCount()
     {
-        return  $this->db->col('SELECT COUNT(id) FROM posts');
+        return $this->db->col('SELECT COUNT(id) FROM posts');
     }
 
     public function postsList($route)

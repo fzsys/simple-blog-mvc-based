@@ -7,11 +7,12 @@ use PDO;
 class Db
 {
     protected $db;
-    
+
     public function __construct()
     {
         $config = require 'application/config/db.php';
-        $this->db = new PDO("mysql:host={$config['host']};dbname={$config['dbname']}", $config['user'], $config['pass']);
+        $this->db = new PDO("mysql:host={$config['host']};dbname={$config['dbname']}", $config['user'],
+            $config['pass']);
     }
 
     public function query($sql, $params = [])
@@ -19,7 +20,7 @@ class Db
         $stmt = $this->db->prepare($sql);
         if (!empty($params)) {
             foreach ($params as $key => $val) {
-                if(is_int($val)) {
+                if (is_int($val)) {
                     $type = PDO::PARAM_INT;
                 } else {
                     $type = PDO::PARAM_STR;

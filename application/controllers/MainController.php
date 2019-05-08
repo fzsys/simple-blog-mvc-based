@@ -20,8 +20,8 @@ class MainController extends Controller
 
     public function contactAction()
     {
-        if(!empty($_POST)) {
-            if(!$this->model->formValidate($_POST)) {
+        if (!empty($_POST)) {
+            if (!$this->model->formValidate($_POST)) {
                 $this->view->message('error', $this->model->error);
             }
             mail('example@gmail.com', 'Message from blog', $_POST['text']);

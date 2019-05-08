@@ -4,7 +4,6 @@ namespace application\controllers;
 
 use application\core\Controller;
 use application\lib\Pagination;
-use application\models\MainModel;
 
 class AdminController extends Controller
 {
@@ -80,7 +79,7 @@ class AdminController extends Controller
             }
 
             $this->model->postEdit($_POST, $this->route['id']);
-            if($_FILES['img']['tmp_name']) {
+            if ($_FILES['img']['tmp_name']) {
                 $this->model->postUploadImg($_FILES['img']['tmp_name'], $this->route['id']);
             }
             $this->view->message('success', 'Edited');
